@@ -366,11 +366,13 @@ describe('UniswapV2Router{01,02}', () => {
             overrides
           )
           const receipt = await tx.wait()
-          expect(receipt.gasUsed).to.eq(
+          console.log(receipt.gasUsed)
+          expect(receipt.gasUsed).to.be.lt(
             {
               [RouterVersion.UniswapV2Router01]: 101876,
               [RouterVersion.UniswapV2Router02]: 101898
-            }[routerVersion as RouterVersion]
+            }[routerVersion as RouterVersion],
+            "REEEEEEEEEEEEEEEEE NOT OPTIMIZED"
           )
         }).retries(3)
       })
@@ -515,11 +517,13 @@ describe('UniswapV2Router{01,02}', () => {
             }
           )
           const receipt = await tx.wait()
-          expect(receipt.gasUsed).to.eq(
+          console.log(receipt.gasUsed)
+          expect(receipt.gasUsed).to.be.lt(
             {
               [RouterVersion.UniswapV2Router01]: 138770,
               [RouterVersion.UniswapV2Router02]: 138770
-            }[routerVersion as RouterVersion]
+            }[routerVersion as RouterVersion],
+            "REEEEEEEEEEEEEEEEE NOT OPTIMIZED"
           )
         }).retries(3)
       })
